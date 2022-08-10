@@ -10,7 +10,7 @@ import FateFont from '@site/src/components/FateFont'
 
 要玩命運濃縮版，你們需要二到六名朋友，包括一名遊戲主持人（GM），一些骰子，一些指示物，書寫工具，紙，和可以寫下短語的東西（如小紙條）。
 
-當角色進行行動，命運濃縮版使用**命運骰**™。一顆命運骰是有兩個 <FateFont>0</FateFont> 面、兩個 <FateFont>+</FateFont> 面、兩個 <FateFont>-</FateFont> 面的六面骰。至少要有一組四個骰子，但最好每個玩家都有一組。一些其他選項是使用標準六面骰（1-2 = <FateFont>-</FateFont>、3-4 = <FateFont>0</FateFont>、5-6 = <FateFont>+</FateFont>）、命運牌組（改用卡片而非骰子）。但總之我們都會說是「擲骰」來簡化說明。
+當角色進行行動，命運濃縮版使用**命運骰**™。一顆命運骰是有兩個<FateFont>0</FateFont>面、兩個<FateFont>+</FateFont>面、兩個<FateFont>-</FateFont>面的六面骰。至少要有一組四個骰子，但最好每個玩家都有一組。一些其他選項是使用標準六面骰（1-2 =<FateFont>-</FateFont>、3-4 =<FateFont>0</FateFont>、5-6 =<FateFont>+</FateFont>）、命運牌組（改用卡片而非骰子）。但總之我們都會說是「擲骰」來簡化說明。
 
 ### 給老手：從命運核心版改了什麼
 
