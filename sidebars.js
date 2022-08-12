@@ -24,6 +24,7 @@ const sidebars = {
         'fate-condensed/getting-start',
         'fate-condensed/taking-action-rolling-dice',
         'fate-condensed/aspects-and-fate-points',
+        'fate-condensed/challenges-conflicts-and-contests'
       ]
     },
   ],
