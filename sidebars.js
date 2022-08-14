@@ -21,7 +21,7 @@ const sidebars = {
       collapsible: true,
       collapsed: false,
       items: [
-        'fate-condensed/indroduction',
+        'fate-condensed/introduction',
         'fate-condensed/getting-start',
         'fate-condensed/taking-action-rolling-dice',
         'fate-condensed/aspects-and-fate-points',
