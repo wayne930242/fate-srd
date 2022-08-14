@@ -19,12 +19,16 @@ const sidebars = {
       type: 'category',
       label: 'Fate 濃縮版',
       collapsible: true,
+      collapsed: false,
       items: [
         'fate-condensed/indroduction',
         'fate-condensed/getting-start',
         'fate-condensed/taking-action-rolling-dice',
         'fate-condensed/aspects-and-fate-points',
-        'fate-condensed/challenges-conflicts-and-contests'
+        'fate-condensed/challenges-conflicts-and-contests',
+        'fate-condensed/advancement',
+        'fate-condensed/being-game-master',
+        'fate-condensed/optional-rules',
       ]
     },
   ],
