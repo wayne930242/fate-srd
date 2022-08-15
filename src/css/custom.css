@@ -43,3 +43,8 @@
   padding-right:2px;
   vertical-align:top;
 }
+
+em {
+  font-style:normal;
+  background-color:#e3eba9;
+}

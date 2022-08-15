@@ -10,32 +10,29 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
+    title: '美好的泛用系統',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        命運（Fate）是美好的、可高度客製、無限風格適應性、適用於所有想好好說故事的團的遊戲系統。
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: '由 Docusaurus 建立',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Docusaurus 提供了優秀的文件檢視模式與排版，方便在任何界面下閱讀。
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: '歡迎找我討論',
+    Svg: require('@site/static/img/undraw_around_the_world.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        歡迎找我一起討論命運的規則，或是回報網站的錯誤與臭蟲，<a href='https://www.plurk.com/wayne930242' target='_blank'>洪偉的噗浪</a>、<a href='https://wayneh.tw/' target='_blank'>部落格</a>。
       </>
     ),
   },
