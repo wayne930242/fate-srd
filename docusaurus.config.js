@@ -1,12 +1,12 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require('prism-react-renderer/themes/github')
+const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Fate 濃縮版 SRD',
+  title: '命運濃縮版',
   tagline: '由洪偉所維護的 Fate 中文版 SRD 網站',
   url: 'https://wayneh.tw',
   baseUrl: '/fate-srd/',
@@ -69,7 +69,12 @@ const config = {
             position: 'left',
             label: 'SRD',
           },
-          // {to: '/blog', label: 'Blog', position: 'left'},
+          {
+            type: 'doc',
+            docId: 'tools/fate-dice',
+            position: 'left',
+            label: '命運骰',
+          },
           {
             href: 'https://github.com/wayne930242/fate-srd',
             label: 'GitHub',
@@ -128,6 +133,6 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
-};
+}
 
-module.exports = config;
+module.exports = config

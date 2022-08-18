@@ -39,7 +39,7 @@
 .fate-font {
   font-family:fate;
   font-weight:400;
-  padding-left:2px;
+  padding-left:3px;
   padding-right:2px;
   vertical-align:top;
 }
@@ -47,4 +47,35 @@
 em {
   font-style:normal;
   text-decoration: underline;
+}
+
+#fate-dice-container {
+  font-size: 40px;
+  cursor: pointer;
+  width: 280px;
+}
+
+.tooltip {
+  position: relative;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  font-size: 16px;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
