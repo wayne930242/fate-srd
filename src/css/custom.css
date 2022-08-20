@@ -1,3 +1,6 @@
+@tailwind components;
+@tailwind utilities;
+
 /**
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to
@@ -50,9 +53,9 @@ em {
 }
 
 #fate-dice-container {
-  font-size: 40px;
+  font-size: 20px;
   cursor: pointer;
-  width: 280px;
+  width: 160px;
 }
 
 .tooltip {
@@ -63,7 +66,7 @@ em {
 .tooltip .tooltiptext {
   visibility: hidden;
   font-size: 16px;
-  width: 120px;
+  width: 60px;
   background-color: black;
   color: #fff;
   text-align: center;

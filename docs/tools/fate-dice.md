@@ -1,9 +1,5 @@
-import FateDice from '@site/src/components/Tools/FateDice'
+import FateDices from '@site/src/components/Tools/FateDices'
 
 # 命運骰擲骰器
 
-<FateDice />
-
-<FateDice />
-
-<FateDice />
+<FateDices />
