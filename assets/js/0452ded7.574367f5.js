@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkfate_srd=self.webpackChunkfate_srd||[]).push([[26],{7204:a=>{a.exports=JSON.parse('{"label":"facebook","permalink":"/fate-srd/blog/tags/facebook","allTagsPath":"/fate-srd/blog/tags","count":1}')}}]);

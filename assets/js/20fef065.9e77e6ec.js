@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkfate_srd=self.webpackChunkfate_srd||[]).push([[716],{2318:s=>{s.exports=JSON.parse('{"label":"docusaurus","permalink":"/fate-srd/blog/tags/docusaurus","allTagsPath":"/fate-srd/blog/tags","count":4}')}}]);
