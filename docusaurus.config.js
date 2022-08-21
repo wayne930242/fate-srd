@@ -10,6 +10,7 @@ const config = {
   tagline: '由洪偉所維護的 Fate 中文版 SRD 網站',
   url: 'https://wayneh.tw',
   baseUrl: '/fate-srd/',
+  trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',

@@ -93,7 +93,7 @@ export default function FateDices(): JSX.Element {
   }
 
   return (
-    <div className='w-full'>
+    <div className='w-56'>
       <div className='flex w-full justify-center mt-6 mb-2 h-10'>
         {num > 1
           ?
