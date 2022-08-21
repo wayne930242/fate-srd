@@ -25,7 +25,7 @@ function FateDice(): JSX.Element {
     <div
       id="fate-dice-container"
       className={cx(
-        'my-2 py-4 rounded-md tooltip min-w-fit hover:bg-slate-200 flex content-center justify-center border-slate-2',
+        'my-2 py-4 rounded-md tooltip min-w-fit hover:bg-slate-600 hover:text-white flex content-center justify-center border-slate-600 border-4',
         animate ? 'animate-bounce-once' : null,
       )}
       onClick={handleOnClick}
