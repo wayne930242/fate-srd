@@ -2,6 +2,8 @@ import FateDices from '@site/src/components/Tools/FateDices'
 
 # 命運骰
 
+## 擲骰器
+
 <FateDices />
 
 ## 形容詞梯度

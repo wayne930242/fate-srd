@@ -7,8 +7,7 @@ const fateMap = ['-', '0', '+']
 function FateDice(): JSX.Element {
   const [dices, setDices] = useState<(number)[]>([1, 1, 1, 1])
   const [animate, setAnimate] = useState<boolean>(null)
-  const handleOnClick = async () => {
-    await (async () => { setAnimate(() => false) })()
+  const handleOnClick = () => {
     setDices(() => {
       const newDice = []
       for (var i = 0; i < 4; i++) {
@@ -18,6 +17,9 @@ function FateDice(): JSX.Element {
       return newDice
     })
     setAnimate(() => true)
+    setTimeout(() => {
+      setAnimate(() => false)
+    }, 650)
   }
   return (
     <div
