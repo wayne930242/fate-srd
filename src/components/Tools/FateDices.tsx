@@ -6,7 +6,9 @@ const fateMap = ['-', '0', '+']
 
 function FateDice(): JSX.Element {
   const [dices, setDices] = useState<(number)[]>([1, 1, 1, 1])
-  const handleOnClick = () => {
+  const [animate, setAnimate] = useState<boolean>(null)
+  const handleOnClick = async () => {
+    await (async () => { setAnimate(() => false) })()
     setDices(() => {
       const newDice = []
       for (var i = 0; i < 4; i++) {
@@ -15,11 +17,15 @@ function FateDice(): JSX.Element {
       }
       return newDice
     })
+    setAnimate(() => true)
   }
   return (
     <div
       id="fate-dice-container"
-      className='my-2 py-4 rounded-md tooltip min-w-fit hover:bg-slate-200 flex justify-center'
+      className={cx(
+        'my-2 py-4 rounded-md tooltip min-w-fit hover:bg-slate-200 flex content-center justify-center border-slate-2',
+        animate ? 'animate-bounce-once' : null,
+      )}
       onClick={handleOnClick}
     >
       {dices.map((dice, index) => {
@@ -37,7 +43,6 @@ function FateDice(): JSX.Element {
         }) - 1
         }`
       }
-
     </div>
   )
 }
