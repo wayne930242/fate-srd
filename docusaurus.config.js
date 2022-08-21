@@ -91,6 +91,12 @@ const config = {
             label: '命運骰',
           },
           {
+            type: 'doc',
+            docId: 'tools/character-sheet',
+            position: 'left',
+            label: '角色卡',
+          },
+          {
             href: 'https://github.com/wayne930242/fate-srd',
             label: 'GitHub',
             position: 'right',
