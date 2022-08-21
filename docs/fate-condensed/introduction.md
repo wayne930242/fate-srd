@@ -12,6 +12,8 @@ import FateFont from '@site/src/components/FateFont'
 
 當角色行動，命運濃縮版使用**命運骰**™。一顆命運骰是有兩個<FateFont>0</FateFont>面、兩個<FateFont>+</FateFont>面、兩個<FateFont>-</FateFont>面的六面骰。至少要有一組四個骰子，但最好每個玩家都有一組。還有其他選項，像是使用標準的六面骰（1-2 =<FateFont>-</FateFont>、3-4 =<FateFont>0</FateFont>、5-6 =<FateFont>+</FateFont>）、命運牌組（改用卡片而非骰子）。但總之我們都會說是「擲骰」來簡化說明。
 
+> 如果你臨時無法取得命運骰，你也可以使用本站的[線上擲骰器](../tools/fate-dice)。
+
 ### 給老手：從命運核心版改了什麼
 
 將一個系統的要點從近 300 頁壓縮到約 50 頁的文字，確實會導致改動。此外，在本文寫作時，*命運核心版*也已經八年了，所以預期也會有設計上的修正。特別是以下幾點：

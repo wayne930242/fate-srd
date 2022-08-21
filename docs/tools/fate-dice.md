@@ -1,4 +1,4 @@
-import FateDices from '@site/src/components/Tools/FateDices'
+import FateDices from '@site/src/components/FateDice/FateDices'
 
 # 命運骰
 
