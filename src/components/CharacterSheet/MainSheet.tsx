@@ -134,8 +134,10 @@ function StressBox({
           "px-2 text-2l",
           "md:px-1.5 md:text-sm",
           "print:px-1.5 print:text-sm",
-          filled ? "bg-slate-600 text-white border-slate-600" : "",
-          status === "disabled" ? "border-slate-400 text-slate-400 cursor-default" : "cursor-pointer hover:bg-slate-200",
+          filled ? "bg-slate-800 text-white border-slate-800" : "",
+          status === "disabled"
+            ? "border-slate-400 text-slate-400 cursor-default"
+            : "cursor-pointer hover:bg-slate-500 hover:text-white hover:border-slate-500",
         )}
       >
         {point}
@@ -272,11 +274,55 @@ function RegularStunts(): JSX.Element {
   )
 }
 
+function Skill({
+  name,
+  handleOnInput,
+}: {
+  name: string,
+  handleOnInput: (n: number) => any
+}): JSX.Element {
+  return (
+    <div className="flex flex-row h-5 my-2">
+      <input
+        className={cx(
+          "block border-0 py-3 px-1 w-12 mx-1 border-solid border-b-2 text-2xl text-center",
+          "hover:bg-slate-200",
+        )}
+        type="number"
+        autoComplete="false"
+        onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
+          const num = Number(e.target.value)
+          if (num !== NaN) {
+            handleOnInput(num)
+          }
+        }}
+      />
+      <div className="text-xl">
+        {name}
+      </div>
+    </div>
+  )
+}
 function Skills(): JSX.Element {
+  const { skills, setSkillsAssign } = useContext(ContextStore)
   return (
     <div className="h-full">
       <Title>技能</Title>
-
+      <BlockContainer>
+        {skills.map((s, index) => (
+          <Skill
+            key={s}
+            name={s}
+            handleOnInput={(n) => {
+              setSkillsAssign((oldAssign) => {
+                const newAssign = [...oldAssign]
+                newAssign[index][s] = n
+                return newAssign
+              })
+            }}
+          />
+        ))}
+      </BlockContainer>
     </div>
   )
 }
