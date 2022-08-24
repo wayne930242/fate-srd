@@ -23,7 +23,7 @@ function Subtitle({ children }: { children: string }): JSX.Element {
 
 function BlockContainer({ children, position = 'left' }: { children: React.ReactNode, position?: 'left' | 'right' }): JSX.Element {
   return (
-    <div className="px-4 py-2 w-full">
+    <div className="px-6 py-2 md:py-0 w-full flex flex-col print:items-start items-center md:items-start">
       {children}
     </div>
   )
@@ -43,7 +43,7 @@ function InputWithLabel({
   value?: string,
 }): JSX.Element {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full">
       <div className="font-extrabold text-sm px-2">
         {children}
       </div>
@@ -265,11 +265,38 @@ function Vitals(): JSX.Element {
   )
 }
 
+function AddStunt({
+  handleOnInput,
+}: {
+  handleOnInput?: (stunt: { title: string, description: string }) => any,
+}): JSX.Element {
+  return (
+    <div
+      className="cursor-pointer my-4 w-full rounded-lg hover:bg-slate-400 text-slate-400 py-4 text-lg hover:text-white flex justify-center print:hidden"
+    >
+      新增絕技
+    </div>
+  )
+}
+function Stunt({
+  handleOnInput,
+  index,
+}: {
+  handleOnInput: (stunt: { title: string, description: string }) => any,
+  index: number,
+}): JSX.Element {
+  return (
+    <div>
+    </div>
+  )
+}
 function RegularStunts(): JSX.Element {
   return (
     <div className="h-full">
       <Title>一般絕技</Title>
-
+      <BlockContainer>
+        <AddStunt />
+      </BlockContainer>
     </div>
   )
 }
@@ -277,18 +304,20 @@ function RegularStunts(): JSX.Element {
 function Skill({
   name,
   handleOnInput,
+  num,
 }: {
   name: string,
-  handleOnInput: (n: number) => any
+  handleOnInput: (n: number) => any,
+  num: number,
 }): JSX.Element {
   return (
-    <div className="flex flex-row h-5 my-2">
+    <div className="flex flex-row h-5 print:my-1 md:my-1 my-2">
       <input
         className={cx(
-          "block border-0 py-3 px-1 w-12 mx-1 border-solid border-b-2 text-2xl text-center",
+          "block border-0 py-3 px-1 w-12 mx-1 border-solid border-b-2 md:text-2xl print:text-2xl text-3xl text-center",
           "hover:bg-slate-200",
         )}
-        type="number"
+        type="text"
         autoComplete="false"
         onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
           const num = Number(e.target.value)
@@ -296,15 +325,24 @@ function Skill({
             handleOnInput(num)
           }
         }}
+        value={String(num)}
+        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+          if (e.key === "ArrowDown") {
+            handleOnInput(num + 1)
+          }
+          if (e.key === "ArrowUp") {
+            handleOnInput(num - 1)
+          }
+        }}
       />
-      <div className="text-xl">
+      <div className="md:text-xl text-2xl print:text-xl">
         {name}
       </div>
     </div>
   )
 }
 function Skills(): JSX.Element {
-  const { skills, setSkillsAssign } = useContext(ContextStore)
+  const { skills, setSkillsAssign, skillsAssign } = useContext(ContextStore)
   return (
     <div className="h-full">
       <Title>技能</Title>
@@ -313,6 +351,11 @@ function Skills(): JSX.Element {
           <Skill
             key={s}
             name={s}
+            num={
+              skillsAssign.filter((skill) => {
+                return Object.keys(skill)[0] === s
+              })[0]
+            }
             handleOnInput={(n) => {
               setSkillsAssign((oldAssign) => {
                 const newAssign = [...oldAssign]
@@ -338,8 +381,8 @@ function Refresh(): JSX.Element {
 const ContextStore = createContext<{
   skills: string[],
   setSkills: React.Dispatch<React.SetStateAction<string[]>>,
-  skillsAssign: { [key: string]: number }[],
-  setSkillsAssign: React.Dispatch<React.SetStateAction<{ [key: string]: number }[]>>,
+  skillsAssign: { [key: string]: number },
+  setSkillsAssign: React.Dispatch<React.SetStateAction<{ [key: string]: number }>>,
   refresh: number,
   setRefresh: React.Dispatch<React.SetStateAction<number>>,
   refreshMax: number,
@@ -350,7 +393,7 @@ const ContextStore = createContext<{
 
 export default function MainSheet(): JSX.Element {
   const [skills, setSkills] = useState<string[]>(defaultSkills)
-  const [skillsAssign, setSkillsAssign] = useState<{ [key: string]: number }[]>(defaultSkills.map((s) => ({ [s]: 0 })))
+  const [skillsAssign, setSkillsAssign] = useState<{ [key: string]: number }>(defaultSkills.map((s) => ({ [s]: 0 })))
   const [refresh, setRefresh] = useState<number>(3)
   const [refreshMax, setRefreshMax] = useState<number>(3)
   const [stunts, setStunts] = useState<{ title: string, description: string }[]>([])
@@ -419,9 +462,10 @@ export default function MainSheet(): JSX.Element {
           </div>
           <div
             className={cx(
-              "w-full flex flex-col",
+              "w-full flex",
+              "flex-col-reverse",
               "print:grid print:grid-cols-12",
-              "md:grid md:grid-cols-12",
+              "md:grid md:grid-cols-12 md:flex-col",
             )}
             style={{
               minHeight: "167mm",
