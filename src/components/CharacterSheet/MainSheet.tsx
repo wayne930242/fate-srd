@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createContext, useContext } from "react"
+import React, { useEffect, useState, createContext, useContext, useRef } from "react"
 import cx from "classnames"
 import { defaultSkills } from "@site/src/helpers/data"
 
@@ -23,7 +23,7 @@ function Subtitle({ children }: { children: string }): JSX.Element {
 
 function BlockContainer({ children, position = 'left' }: { children: React.ReactNode, position?: 'left' | 'right' }): JSX.Element {
   return (
-    <div className="px-6 py-2 md:py-0 w-full flex flex-col print:items-start items-center md:items-start">
+    <div className="px-6 py-2 w-full flex flex-col print:items-start items-center md:items-start">
       {children}
     </div>
   )
@@ -158,8 +158,8 @@ function StressTrack({
   const [stressBoxes, setStressBoxes] = useState<JSX.Element[]>([])
 
   useEffect(() => {
-    setStressBoxes(oldBoxes => {
-      const newBoxes = [...oldBoxes]
+    setStressBoxes(() => {
+      const newBoxes = []
       for (var i = 0; i < max; i++) {
         if (i < number) {
           newBoxes.push(
@@ -236,6 +236,7 @@ function Consequence({
 }
 
 function Vitals(): JSX.Element {
+  const { skillsAssign } = useContext(ContextStore)
   return (
     <div>
       <Title>生命力</Title>
@@ -245,8 +246,16 @@ function Vitals(): JSX.Element {
             壓力
           </Subtitle>
           <div>
-            <StressTrack label="物理" number={3} />
-            <StressTrack label="心靈" number={3} />
+            <StressTrack label="物理" number={
+              skillsAssign["體魄"] === 0 ? 3
+                : skillsAssign["體魄"] < 3 ? 4
+                  : 6
+            } />
+            <StressTrack label="心靈" number={
+              skillsAssign["意志"] === 0 ? 3
+                : skillsAssign["意志"] < 3 ? 4
+                  : 6
+            } />
           </div>
         </div>
         <div>
@@ -257,7 +266,12 @@ function Vitals(): JSX.Element {
             <Consequence degree="mild" />
             <Consequence degree="moderate" />
             <Consequence degree="severe" />
-            <Consequence degree="mild" status="disabled" />
+            <Consequence
+              degree="mild"
+              status={
+                skillsAssign["體魄"] < 5 && skillsAssign["意志"] < 5 ? "disabled" : "active"
+              }
+            />
           </div>
         </div>
       </BlockContainer>
@@ -266,36 +280,90 @@ function Vitals(): JSX.Element {
 }
 
 function AddStunt({
-  handleOnInput,
+  onClick,
 }: {
-  handleOnInput?: (stunt: { title: string, description: string }) => any,
+  onClick: (e?: React.MouseEvent<HTMLDivElement>) => any,
 }): JSX.Element {
   return (
     <div
-      className="cursor-pointer my-4 w-full rounded-lg hover:bg-slate-400 text-slate-400 py-4 text-lg hover:text-white flex justify-center print:hidden"
+      onClick={onClick}
+      className="cursor-pointer my-4 w-32 rounded-lg hover:bg-slate-500 text-slate-500 py-3 text-lg hover:text-white flex justify-center print:hidden"
+      data-bs-toggle="modal" data-bs-target="#newStuntModal"
     >
       新增絕技
     </div>
   )
 }
 function Stunt({
-  handleOnInput,
   index,
 }: {
-  handleOnInput: (stunt: { title: string, description: string }) => any,
   index: number,
 }): JSX.Element {
+  const { stunts, setStunts } = useContext(ContextStore)
+  // FIXME: Need REALLY update state
+
   return (
-    <div>
+    <div className="my-1 flex justify-between">
+      <div className="my-2 text-lg">
+        <span
+          className="font-extrabold hover:underline hover:text-slate-600"
+          contentEditable
+          suppressContentEditableWarning
+        >{"編輯名稱"}</span>
+        ：
+        <span
+          className="hover:underline hover:text-slate-600 indent-8"
+          contentEditable
+          suppressContentEditableWarning
+        >{"編輯描述。"}</span>
+      </div>
     </div>
   )
 }
 function RegularStunts(): JSX.Element {
+  const { refreshMax, stunts, setStunts } = useContext(ContextStore)
+  const [stuntComponents, setStuntComponents] = useState<JSX.Element[]>([])
+
+  const addStunt = () => {
+    setStuntComponents(cp => {
+      const newCp = [...cp]
+      
+      newCp[currentIndex] =
+        <div className="relative">
+          <div
+            onClick={removeStunt}
+            className="absolute -left-8 top-1 w-6 mr-2 cursor-pointer text-center my-2 rounded-2xl hover:bg-slate-500 text-slate-300 hover:text-white print:hidden"
+          >
+            X
+          </div>
+          <Stunt
+            key={currentIndex}
+            index={cp.length}
+          />
+        </div>
+      return newCp
+    })
+    setCurrentIndex(i => i + 1)
+  }
+
+  const removeStunt = () => {
+    setStuntComponents(sc => {
+      const newSc = [...sc]
+      newSc[currentIndex] = null
+      return newSc
+    })
+  }
+
   return (
     <div className="h-full">
       <Title>一般絕技</Title>
       <BlockContainer>
-        <AddStunt />
+        {stuntComponents}
+        {currentIndex >= refreshMax + 2 ? null : (
+          <div className="w-full flex justify-center">
+            <AddStunt onClick={addStunt} />
+          </div>
+        )}
       </BlockContainer>
     </div>
   )
@@ -317,21 +385,20 @@ function Skill({
           "block border-0 py-3 px-1 w-12 mx-1 border-solid border-b-2 md:text-2xl print:text-2xl text-3xl text-center",
           "hover:bg-slate-200",
         )}
-        type="text"
+        type="number"
         autoComplete="false"
         onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
-          const num = Number(e.target.value)
-          if (num !== NaN) {
-            handleOnInput(num)
-          }
+          handleOnInput(Number(e.target.value))
         }}
-        value={String(num)}
+        value={num ? String(num) : ''}
         onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+          e.stopPropagation()
+          e.preventDefault()
           if (e.key === "ArrowDown") {
-            handleOnInput(num + 1)
+            handleOnInput(num - 1)
           }
           if (e.key === "ArrowUp") {
-            handleOnInput(num - 1)
+            handleOnInput(num + 1)
           }
         }}
       />
@@ -344,22 +411,18 @@ function Skill({
 function Skills(): JSX.Element {
   const { skills, setSkillsAssign, skillsAssign } = useContext(ContextStore)
   return (
-    <div className="h-full">
+    <div className="h-full pb-4">
       <Title>技能</Title>
       <BlockContainer>
-        {skills.map((s, index) => (
+        {skills.map((s) => (
           <Skill
             key={s}
             name={s}
-            num={
-              skillsAssign.filter((skill) => {
-                return Object.keys(skill)[0] === s
-              })[0]
-            }
+            num={skillsAssign[s]}
             handleOnInput={(n) => {
-              setSkillsAssign((oldAssign) => {
-                const newAssign = [...oldAssign]
-                newAssign[index][s] = n
+              setSkillsAssign((oldSa) => {
+                const newAssign = { ...oldSa }
+                newAssign[s] = n
                 return newAssign
               })
             }}
@@ -393,7 +456,13 @@ const ContextStore = createContext<{
 
 export default function MainSheet(): JSX.Element {
   const [skills, setSkills] = useState<string[]>(defaultSkills)
-  const [skillsAssign, setSkillsAssign] = useState<{ [key: string]: number }>(defaultSkills.map((s) => ({ [s]: 0 })))
+  const [skillsAssign, setSkillsAssign] = useState<{ [key: string]: number }>(() => {
+    const obj = {}
+    for (const sa of defaultSkills) {
+      obj[sa] = 0
+    }
+    return obj
+  })
   const [refresh, setRefresh] = useState<number>(3)
   const [refreshMax, setRefreshMax] = useState<number>(3)
   const [stunts, setStunts] = useState<{ title: string, description: string }[]>([])
