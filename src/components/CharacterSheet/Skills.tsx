@@ -13,7 +13,7 @@ function Skill({
   num: number,
 }): JSX.Element {
   return (
-    <div className="flex flex-row h-8 md:h-6 print:mt-1 print:mb-1.5 md:my-1 my-3 print:h-4 mr-6 md:mx-0">
+    <div className="flex flex-row h-8 md:h-6 print:mt-1 print:mb-1.5 md:my-1 my-1 print:h-4 mr-6 md:mx-0">
       <input
         className={cx(
           "block border-0 py-4 md:py-2 print:py-2 px-1 w-12 mx-1 border-solid border-b-2 md:text-2xl print:text-2xl text-xl text-center",

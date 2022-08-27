@@ -123,7 +123,7 @@ export function StressTrack({
 
   return (
     <div className="flex flex-row w-full mx-auto mb-2 justify-center md:justify-start">
-      <div className="font-extrabold mr-2 text-xl">{label}</div>
+      <div className="font-extrabold mr-2 text-lg md:text-xl">{label}</div>
       {stressBoxes}
     </div>
   )
