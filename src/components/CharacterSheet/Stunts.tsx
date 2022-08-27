@@ -86,7 +86,7 @@ export function RegularStunts(): JSX.Element {
   }
 
   return (
-    <div className="h-full">
+    <div className="h-full mb-10 md:mb-0">
       <Title>一般絕技</Title>
       <BlockContainer>
         {stuntComponents}
