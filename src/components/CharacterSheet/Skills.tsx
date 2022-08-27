@@ -43,11 +43,11 @@ function Skill({
 export function Skills(): JSX.Element {
   const { skills, setSkillsAssign, skillsAssign } = React.useContext(ContextStore)
   return (
-    <div className="sm:h-full print:h-full pb-3 ">
+    <div className="sm:h-full print:h-full pb-3">
       <Title>技能</Title>
       <BlockContainer>
         <div 
-          className='flex flex-col flex-wrap md:h-full print:h-full w-full h-96 overflow-x-auto print:py-0 md:py-0'
+          className='flex flex-col flex-wrap md:h-full print:h-full w-full h-96 overflow-x-auto overflow-y-visible print:pb-4 md:py-0'
         >
           {skills.map((s) => (
             <Skill
