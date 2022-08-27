@@ -83,7 +83,7 @@ function StressBox({
           filled ? "bg-slate-800 text-white border-slate-800" : "",
           status === "disabled"
             ? "border-slate-400 text-slate-400 cursor-default"
-            : "cursor-pointer hover:bg-slate-500 hover:text-white hover:border-slate-500",
+            : "cursor-pointer",
         )}
       >
         {point}
