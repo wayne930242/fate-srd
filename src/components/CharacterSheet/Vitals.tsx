@@ -135,7 +135,7 @@ export function Vitals(): JSX.Element {
     <div>
       <Title>生命力</Title>
       <BlockContainer>
-        <div>
+        <div className='w-full'>
           <Subtitle>
             壓力
           </Subtitle>
@@ -152,7 +152,7 @@ export function Vitals(): JSX.Element {
             } />
           </div>
         </div>
-        <div>
+        <div className='w-full'>
           <Subtitle>
             後果
           </Subtitle>
