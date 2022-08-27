@@ -29,7 +29,7 @@ export function Refresh(): JSX.Element {
   const { refreshMax } = React.useContext(ContextStore)
   return (
     <div className='md:absolute md:bottom-14 w-full print:absolute print:bottom-20'>
-      <div className='absolute -bottom-4 left-10'>
+      <div className='absolute -bottom-4 left-6'>
         <CircleInput />
       </div>
       <Title>
