@@ -95,6 +95,7 @@ const config = {
             docId: 'tools/character-sheet',
             position: 'left',
             label: '角色卡',
+            target: '_blank',
           },
           {
             href: 'https://github.com/wayne930242/fate-srd',
