@@ -112,3 +112,19 @@ em {
     animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
+
+.skill-height {
+  height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .skill-height {
+    height: 30rem;
+  }
+}
+
+@media print {
+  .skill-height {
+    height: 100%;
+  }
+}

@@ -70,7 +70,7 @@ export function RegularStunts(): JSX.Element {
       return newCp
     })
     if (stuntNum >= 3) {
-      setRefresh(r => r-1)
+      setRefresh(r => r - 1)
     }
   }
 
@@ -80,17 +80,15 @@ export function RegularStunts(): JSX.Element {
       newSc[index] = null
       return newSc
     })
-    if (stuntNum >= 3) {
-      setRefresh(r => r+1)
-    }
+    setRefresh(r => Math.min(r + 1, 3))
   }
 
   return (
-    <div className="h-full mb-10 md:mb-0">
+    <div className="h-full mb-16 md:mb-0">
       <Title>一般絕技</Title>
       <BlockContainer>
         {stuntComponents}
-        { stuntNum >= refreshMax + 2 ? null : (
+        {stuntNum >= refreshMax + 2 ? null : (
           <div className="w-full flex justify-center">
             <AddStunt onClick={addStunt} />
           </div>
