@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkfate_srd=self.webpackChunkfate_srd||[]).push([[8341],{9997:e=>{e.exports=JSON.parse('{"permalink":"/fate-srd/blog/tags/hello","page":1,"postsPerPage":10,"totalPages":1,"totalCount":2,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);
