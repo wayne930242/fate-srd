@@ -8,8 +8,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 const config = {
   title: '命運濃縮版',
   tagline: '由洪偉所維護的 Fate 中文版 SRD 網站',
-  url: 'https://wayneh.tw',
-  baseUrl: '/fate-srd/',
+  url: 'https://fate-srd. wayneh.tw',
+  baseUrl: '/',
   trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
